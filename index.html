@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atharva Harsulkar | DevSecOps Sentinel</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;600&family=Space+Grotesk:wght@300;700&display=swap');
+
+:root{
+--neon:#00ff88;
+--bg:#050505;
+}
+
+body{
+background:var(--bg);
+color:#cfcfcf;
+font-family:'Space Grotesk',sans-serif;
+overflow-x:hidden;
+}
+
+.mono{font-family:'JetBrains Mono',monospace;}
+
+.neon{color:var(--neon);text-shadow:0 0 15px var(--neon);}
+
+.card{
+background:rgba(255,255,255,0.03);
+border-left:4px solid var(--neon);
+padding:25px;
+transition:0.3s;
+}
+
+.card:hover{
+background:rgba(0,255,136,0.05);
+transform:translateX(10px);
+}
+
+.section-title{
+font-size:70px;
+font-weight:900;
+margin-bottom:40px;
+}
+
+.grid-bg{
+position:fixed;
+inset:0;
+background-image:linear-gradient(rgba(0,255,136,0.05) 1px,transparent 1px),
+linear-gradient(90deg,rgba(0,255,136,0.05) 1px,transparent 1px);
+background-size:50px 50px;
+z-index:-1;
+}
+</style>
+</head>
+
+<body class="grid-bg">
+
+<nav class="fixed w-full bg-black/80 backdrop-blur p-4 flex justify-between z-50">
+<div class="neon font-bold mono">ATHARVA_DEVSECOPS</div>
+<div class="mono text-xs space-x-6">
+<a href="#overview">FOUNDATIONS</a>
+<a href="#pipeline">PIPELINE</a>
+<a href="#docker">DOCKER</a>
+<a href="#k8s">KUBERNETES</a>
+<a href="#security">SECURITY</a>
+<a href="#interview">INTERVIEW</a>
+</div>
+</nav>
+
+<section class="h-screen flex flex-col justify-center items-center text-center">
+<h1 class="text-[120px] font-black">DEVSECOPS</h1>
+<p class="mono neon">Atharva Harsulkar — Enterprise Learning Portal</p>
+</section>
+
+<section id="overview" class="p-20 max-w-6xl mx-auto">
+<h2 class="section-title">DevSecOps Foundations</h2>
+
+<div class="card mb-8">
+<h3 class="neon text-2xl mb-3">What is DevSecOps</h3>
+<p>
+DevSecOps is the practice of integrating security into every stage of the software development lifecycle. 
+Instead of treating security as a separate final step, it becomes a continuous responsibility shared by developers, operations, and security teams.
+</p>
+<p>
+This approach ensures vulnerabilities are detected early, reducing risk, cost, and production incidents. 
+Modern enterprises adopt DevSecOps to achieve both high delivery speed and strong cybersecurity posture.
+</p>
+</div>
+
+<div class="card mb-8">
+<h3 class="neon text-2xl mb-3">DevOps vs DevSecOps</h3>
+<p>
+DevOps focuses on collaboration between development and operations to deliver software faster and more reliably. 
+DevSecOps extends this model by embedding security practices such as vulnerability scanning, compliance checks, and policy enforcement into pipelines.
+</p>
+<p>
+While DevOps improves deployment speed, DevSecOps ensures that rapid deployments do not introduce security risks or compliance violations.
+</p>
+</div>
+
+<div class="card">
+<h3 class="neon text-2xl mb-3">Shift Left Security</h3>
+<p>
+Shift Left means moving security testing earlier in the development lifecycle. 
+This ensures vulnerabilities are detected during coding rather than after deployment.
+</p>
+<p>
+For example, detecting a hardcoded password during code review costs far less than fixing a data breach in production.
+</p>
+</div>
+
+</section>
+
+<section id="pipeline" class="p-20 bg-black/40">
+<h2 class="section-title">CI/CD Pipeline</h2>
+
+<div class="card mb-8">
+<h3 class="neon text-xl">Continuous Integration</h3>
+<p>
+Continuous Integration is the practice of frequently merging code into a shared repository where automated tests validate functionality. 
+This reduces integration conflicts and ensures stable builds.
+</p>
+<p>
+Example: Every Git push triggers automated testing pipelines in Jenkins or GitHub Actions.
+</p>
+</div>
+
+<div class="card mb-8">
+<h3 class="neon text-xl">Continuous Delivery</h3>
+<p>
+Continuous Delivery ensures code is always in a deployable state by automating build and test processes. 
+Manual approval is still required before deployment to production.
+</p>
+<p>
+This approach allows organizations to release features quickly while maintaining governance.
+</p>
+</div>
+
+<div class="card">
+<h3 class="neon text-xl">Continuous Deployment</h3>
+<p>
+Continuous Deployment automatically releases validated changes to production without human intervention. 
+This is common in high-maturity tech organizations like Netflix.
+</p>
+<p>
+It requires strong testing, monitoring, and rollback mechanisms to prevent service disruption.
+</p>
+</div>
+
+</section>
+
+<section id="docker" class="p-20">
+<h2 class="section-title">Docker Concepts</h2>
+
+<div class="card mb-8">
+<h3 class="neon text-xl">Containers vs Virtual Machines</h3>
+<p>
+Virtual Machines virtualize hardware using hypervisors, resulting in higher resource consumption. 
+Containers virtualize the OS kernel, making them lightweight and faster.
+</p>
+<p>
+For example, a VM may take minutes to start, whereas a container starts in seconds.
+</p>
+</div>
+
+<div class="card mb-8">
+<h3 class="neon text-xl">Docker Security</h3>
+<p>
+Docker security includes image scanning, runtime protection, and least-privilege execution. 
+Running containers as root increases risk of host compromise.
+</p>
+<p>
+Tools like Trivy and Falco help detect vulnerabilities and suspicious runtime activities.
+</p>
+</div>
+
+</section>
+
+<section id="k8s" class="p-20 bg-black/40">
+<h2 class="section-title">Kubernetes Architecture</h2>
+
+<div class="card mb-8">
+<h3 class="neon text-xl">Control Plane</h3>
+<p>
+The control plane manages cluster state, scheduling, and orchestration. 
+It includes API server, scheduler, controller manager, and etcd.
+</p>
+<p>
+Without a healthy control plane, cluster operations such as scaling or deployment will fail.
+</p>
+</div>
+
+<div class="card">
+<h3 class="neon text-xl">Worker Nodes</h3>
+<p>
+Worker nodes run containerized workloads through kubelet and container runtime. 
+Pods are scheduled onto these nodes based on resource availability.
+</p>
+<p>
+They form the execution layer of Kubernetes infrastructure.
+</p>
+</div>
+
+</section>
+
+<section id="security" class="p-20">
+<h2 class="section-title">DevSecOps Security</h2>
+
+<div class="card mb-8">
+<h3 class="neon text-xl">SAST</h3>
+<p>
+Static Application Security Testing analyzes source code without executing it. 
+It detects vulnerabilities such as insecure coding patterns and secrets exposure.
+</p>
+</div>
+
+<div class="card mb-8">
+<h3 class="neon text-xl">DAST</h3>
+<p>
+Dynamic Application Security Testing analyzes running applications by simulating attacks. 
+It identifies runtime vulnerabilities like injection flaws and authentication issues.
+</p>
+</div>
+
+<div class="card">
+<h3 class="neon text-xl">Zero Trust</h3>
+<p>
+Zero Trust assumes no implicit trust inside or outside the network. 
+Every access request must be authenticated and authorized.
+</p>
+</div>
+
+</section>
+
+<section id="interview" class="p-20 bg-black/50">
+<h2 class="section-title">DevSecOps Interview Prep</h2>
+
+<div class="space-y-8">
+
+<div class="card">
+<h3 class="neon">1. What is DevSecOps?</h3>
+<p><b>Answer:</b> DevSecOps integrates security into DevOps workflows to ensure secure software delivery. 
+Example: Implementing SAST scanning inside Jenkins pipeline.</p>
+</div>
+
+<div class="card">
+<h3 class="neon">2. Difference between CI and CD?</h3>
+<p><b>Answer:</b> CI integrates code changes, CD automates deployment readiness. 
+Example: GitHub Actions builds code (CI) → ArgoCD deploys (CD).</p>
+</div>
+
+<div class="card">
+<h3 class="neon">3. How does Kubernetes ensure high availability?</h3>
+<p><b>Answer:</b> Through ReplicaSets and self-healing scheduling.</p>
+</div>
+
+<div class="card">
+<h3 class="neon">4. What is container runtime security?</h3>
+<p><b>Answer:</b> Monitoring container behavior in real-time using Falco.</p>
+</div>
+
+<div class="card">
+<h3 class="neon">5. Explain GitOps.</h3>
+<p><b>Answer:</b> Using Git as the single source of truth for infrastructure.</p>
+</div>
+
+<div class="card">
+<h3 class="neon">6. What is Infrastructure as Code?</h3>
+<p><b>Answer:</b> Automating infra provisioning using Terraform.</p>
+</div>
+
+<div class="card">
+<h3 class="neon">7. Difference between SAST and DAST?</h3>
+<p><b>Answer:</b> SAST scans code, DAST scans running apps.</p>
+</div>
+
+<div class="card">
+<h3 class="neon">8. What is CNI?</h3>
+<p><b>Answer:</b> Networking plugin for Kubernetes pods.</p>
+</div>
+
+<div class="card">
+<h3 class="neon">9. Explain Zero Trust.</h3>
+<p><b>Answer:</b> Never trust network boundaries.</p>
+</div>
+
+<div class="card">
+<h3 class="neon">10. What is artifact repository?</h3>
+<p><b>Answer:</b> Storage for build outputs like Docker images.</p>
+</div>
+
+<div class="card">
+<h3 class="neon">11. Explain blue-green deployment.</h3>
+<p><b>Answer:</b> Two environments for zero downtime releases.</p>
+</div>
+
+<div class="card">
+<h3 class="neon">12. What is observability?</h3>
+<p><b>Answer:</b> Monitoring system behavior via logs, metrics, traces.</p>
+</div>
+
+<div class="card">
+<h3 class="neon">13. What is IAM?</h3>
+<p><b>Answer:</b> AWS identity and permission management.</p>
+</div>
+
+<div class="card">
+<h3 class="neon">14. Explain container escape.</h3>
+<p><b>Answer:</b> When attacker breaks container isolation.</p>
+</div>
+
+<div class="card">
+<h3 class="neon">15. What is compliance?</h3>
+<p><b>Answer:</b> Following standards like ISO 27001.</p>
+</div>
+
+</div>
+</section>
+
+<footer class="p-20 text-center mono text-gray-600">
+ATHARVA HARSULKAR — DEVSECOPS ENGINEER
+</footer>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+gsap.from(".section-title",{opacity:0,x:-100,duration:1,scrollTrigger:{trigger:".section-title"}});
+</script>
+
+</body>
+</html>
