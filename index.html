@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atharva Harsulkar | DevSecOps Sentinel Portfolio</title>
+    <title>Atharva Harsulkar | QuantumShield DevSecOps</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -12,264 +12,441 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;600&family=Space+Grotesk:wght@300;700;900&display=swap');
         
-        :root { --neon: #00ff88; --bg: #050505; }
-        html { scroll-behavior: smooth; }
-        body { background: var(--bg); color: #cfcfcf; font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; }
+        :root { --neon: #00ff88; --bg: #030303; --accent: #0088ff; }
+        
+        html, body { 
+            height: auto; 
+            overflow-y: auto; 
+            scroll-behavior: smooth; 
+            background: var(--bg);
+            color: #d1d1d1;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
         .mono { font-family: 'JetBrains Mono', monospace; }
         .neon { color: var(--neon); text-shadow: 0 0 15px var(--neon); }
+        .accent { color: var(--accent); text-shadow: 0 0 15px var(--accent); }
         
         .card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(0, 255, 136, 0.1);
-            border-left: 4px solid var(--neon);
-            padding: 35px;
-            border-radius: 8px;
-            transition: 0.4s ease;
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-left: 3px solid var(--neon);
+            padding: 40px;
+            transition: 0.5s;
         }
-        .card:hover { background: rgba(0, 255, 136, 0.05); transform: translateX(10px); border-color: var(--neon); }
+        .card:hover { background: rgba(0, 255, 136, 0.03); border-color: var(--neon); transform: translateY(-5px); }
 
-        .section-title { font-size: clamp(50px, 8vw, 100px); font-weight: 900; line-height: 0.8; margin-bottom: 50px; text-transform: uppercase; color: white; }
+        .section-title { font-size: clamp(40px, 10vw, 90px); font-weight: 900; line-height: 0.85; margin-bottom: 50px; text-transform: uppercase; color: white; letter-spacing: -2px; }
         
         .grid-bg {
             position: fixed; inset: 0;
-            background-image: linear-gradient(rgba(0, 255, 136, 0.03) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(0, 255, 136, 0.03) 1px, transparent 1px);
-            background-size: 60px 60px; z-index: -1;
+            background-image: linear-gradient(rgba(0, 255, 136, 0.02) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(0, 255, 136, 0.02) 1px, transparent 1px);
+            background-size: 40px 40px; z-index: -1;
         }
 
-        .nav-link { transition: 0.3s; position: relative; }
-        .nav-link:hover { color: var(--neon); }
+        .step-num { font-size: 120px; font-weight: 900; color: rgba(255, 255, 255, 0.03); position: absolute; top: -20px; right: 20px; pointer-events: none; }
 
-        .roadmap-line { position: relative; border-left: 2px solid rgba(0, 255, 136, 0.2); margin-left: 20px; padding-left: 40px; }
-        .roadmap-dot { position: absolute; left: -9px; top: 0; width: 16px; height: 16px; border-radius: 50%; background: var(--neon); box-shadow: 0 0 10px var(--neon); }
-
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-thumb { background: var(--neon); border-radius: 10px; }
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-thumb { background: var(--neon); }
     </style>
 </head>
 
 <body class="grid-bg">
+  
 
-    <nav class="fixed w-full bg-black/90 backdrop-blur-lg border-b border-white/5 p-5 flex justify-between items-center z-50">
-        <div class="neon font-bold mono text-xl italic tracking-tighter">ATHARVA_SENTINEL</div>
-        <div class="hidden xl:flex mono text-[10px] space-x-8 uppercase font-bold tracking-widest text-zinc-500">
-            <a href="#overview" class="nav-link">Foundations</a>
-            <a href="#pipeline" class="nav-link">Pipeline</a>
-            <a href="#docker" class="nav-link">Containers</a>
-            <a href="#k8s" class="nav-link">K8s</a>
-            <a href="#project" class="nav-link text-white">Featured_Project</a>
-            <a href="#security" class="nav-link text-red-500">Sec_Ops</a>
+    <nav class="fixed top-0 w-full bg-black/80 backdrop-blur-md border-b border-white/5 p-4 flex justify-between items-center z-50">
+        <div class="neon font-bold mono text-lg tracking-tighter">QUANTUM_SHIELD // Arthat_Atharva</div>
+        <div class="hidden lg:flex mono text-[10px] space-x-8 uppercase font-bold tracking-widest">
+            <a href="#theory" class="hover:text-white transition">01_The_Concept</a>
+            <a href="#project-core" class="text-white hover:neon transition">02_Project_Shield</a>
+            <a href="#steps" class="hover:text-white transition">03_Execution_Steps</a>
+            <a href="#k8s" class="hover:text-white transition">04_Orchestration</a>
+            <a href="#interview" class="text-red-500 hover:text-red-400 transition">05_Final_Exam</a>
         </div>
     </nav>
 
-    <section class="h-screen flex flex-col justify-center items-center text-center px-4">
-        <div class="absolute w-[500px] h-[500px] bg-green-500/5 blur-[120px] rounded-full -z-10 animate-pulse"></div>
-        <h1 class="text-[80px] md:text-[150px] font-black leading-none text-white italic">DEVSEC<span class="neon">OPS</span></h1>
-        <p class="mono text-zinc-500 mt-4 tracking-[0.8em] text-xs uppercase">Atharva Harsulkar // Master Educational Portal</p>
+    <header class="h-screen flex flex-col justify-center items-center text-center px-4">
+        <div class="absolute w-[400px] h-[400px] bg-blue-500/5 blur-[100px] rounded-full -z-10 animate-pulse"></div>
+        <h1 class="text-[70px] md:text-[140px] font-black leading-none text-white italic tracking-tighter">QUANTUM<br><span class="neon">SHIELD</span></h1>
+        <p class="mono text-zinc-500 mt-6 tracking-[0.6em] text-[10px] uppercase font-bold">The Ultimate DevSecOps Deployment Pipeline</p>
         <div class="mt-12 flex gap-4">
-            <a href="#project" class="bg-green-500 text-black px-10 py-4 font-black uppercase text-xs hover:bg-white transition-all">Launch Project</a>
-            <a href="#overview" class="border border-green-500/20 px-10 py-4 font-black uppercase text-xs text-green-500 hover:bg-green-500 hover:text-black transition-all">View Roadmap</a>
+            <a href="#project-core" class="bg-white text-black px-10 py-4 font-black uppercase text-xs hover:bg-green-500 transition-all">Project Specs</a>
+            <a href="#steps" class="border border-white/20 px-10 py-4 font-black uppercase text-xs text-white hover:bg-white hover:text-black transition-all">Step-by-Step</a>
         </div>
-    </section>
+    </header>
 
-    <section id="soc" class="py-20 px-6 max-w-7xl mx-auto scroll-mt-24">
-        <div class="bg-black border border-green-500/20 rounded-xl overflow-hidden shadow-2xl">
-            <div class="bg-zinc-900/80 p-4 border-b border-green-500/20 flex justify-between items-center">
-                <div class="flex gap-2">
-                    <div class="w-3 h-3 rounded-full bg-red-500/50"></div>
-                    <div class="w-3 h-3 rounded-full bg-yellow-500/50"></div>
-                    <div class="w-3 h-3 rounded-full bg-green-500/50"></div>
+    <main class="max-w-6xl mx-auto px-6 space-y-40 pb-60">
+        <section id="project-core" class="scroll-mt-32 reveal">
+    <div class="bg-zinc-900/40 border border-white/5 p-8 md:p-12 rounded-3xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 p-8 mono text-[10px] text-green-900 opacity-30">REF_ARCH: AWS_612_SEC</div>
+        
+        <h2 class="text-4xl md:text-6xl font-black text-white mb-2 italic">QUANTUMSHIELD</h2>
+        <p class="neon mono text-xs tracking-[0.4em] mb-12 uppercase">End-to-End DevSecOps CI/CD Deployment</p>
+
+        <div class="mb-16">
+            <h4 class="text-white font-bold uppercase text-[10px] mb-8 tracking-[5px] border-l-2 border-blue-500 pl-4">Interactive_System_Architecture</h4>
+            
+            <div class="relative w-full bg-black/40 rounded-2xl border border-white/5 p-10 overflow-x-auto">
+                <svg viewBox="0 0 1000 250" class="w-full min-w-[800px]">
+                    <path d="M100 125 L900 125" stroke="rgba(255,255,255,0.05)" stroke-width="2" stroke-dasharray="8 4" />
+                    
+                    <g class="hover:opacity-80 transition-opacity cursor-help">
+                        <rect x="20" y="85" width="120" height="80" rx="8" fill="#0a0a0a" stroke="#00ff88" stroke-width="1"/>
+                        <text x="80" y="125" fill="white" font-family="JetBrains Mono" font-size="12" text-anchor="middle">DEVELOPER</text>
+                        <text x="80" y="145" fill="#555" font-family="JetBrains Mono" font-size="9" text-anchor="middle">Git Commit</text>
+                    </g>
+
+                    <circle cx="170" cy="125" r="3" fill="#00ff88">
+                        <animate attributeName="cx" from="170" to="220" dur="1.5s" repeatCount="indefinite" />
+                    </circle>
+
+                    <g>
+                        <rect x="220" y="85" width="120" height="80" rx="8" fill="#0a0a0a" stroke="#0088ff" stroke-width="1"/>
+                        <text x="280" y="125" fill="white" font-family="JetBrains Mono" font-size="12" text-anchor="middle">GH ACTIONS</text>
+                        <text x="280" y="145" fill="#555" font-family="JetBrains Mono" font-size="9" text-anchor="middle">CI/CD Engine</text>
+                    </g>
+
+                    <g>
+                        <rect x="420" y="85" width="120" height="80" rx="8" fill="#0a0a0a" stroke="#a855f7" stroke-width="1"/>
+                        <text x="480" y="125" fill="white" font-family="JetBrains Mono" font-size="12" text-anchor="middle">AWS ECR</text>
+                        <text x="480" y="145" fill="#555" font-family="JetBrains Mono" font-size="9" text-anchor="middle">Image Registry</text>
+                    </g>
+
+                    <g>
+                        <rect x="620" y="85" width="120" height="80" rx="40" fill="#0a0a0a" stroke="#00ff88" stroke-width="1"/>
+                        <text x="680" y="125" fill="white" font-family="JetBrains Mono" font-size="12" text-anchor="middle">ECS FARGATE</text>
+                        <text x="680" y="145" fill="#555" font-family="JetBrains Mono" font-size="9" text-anchor="middle">Orchestration</text>
+                    </g>
+
+                    <g>
+                        <rect x="820" y="85" width="120" height="80" rx="8" fill="#0a0a0a" stroke="#fff" stroke-width="1"/>
+                        <text x="880" y="125" fill="white" font-family="JetBrains Mono" font-size="12" text-anchor="middle">AWS ALB</text>
+                        <text x="880" y="145" fill="#555" font-family="JetBrains Mono" font-size="9" text-anchor="middle">Load Balancer</text>
+                    </g>
+                </svg>
+                <div class="mt-6 flex justify-center gap-10 mono text-[10px] text-zinc-600">
+                    <span class="flex items-center gap-2"><div class="w-2 h-2 rounded-full bg-green-500"></div> Code Flow</span>
+                    <span class="flex items-center gap-2"><div class="w-2 h-2 rounded-full bg-blue-500"></div> Logic Gate</span>
+                    <span class="flex items-center gap-2"><div class="w-2 h-2 rounded-full bg-purple-500"></div> Secure Storage</span>
                 </div>
-                <span class="mono text-[10px] neon uppercase tracking-[5px]">Sentinel_SOC_Monitoring</span>
-            </div>
-            <div class="p-8 h-[300px] overflow-y-auto mono text-[12px] text-green-800/80" id="log-engine">
-                <p>> System override active...</p>
-                <p>> Loading Security Modules for Atharva Harsulkar...</p>
             </div>
         </div>
-    </section>
 
-    <div class="max-w-6xl mx-auto px-6 space-y-40 pb-40">
-
-        <section id="overview" class="scroll-mt-24 reveal">
-            <h2 class="section-title">01.<br>Foundations</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="card">
-                    <h3 class="neon text-2xl font-bold mb-4">What is DevSecOps?</h3>
-                    <p class="text-zinc-400 text-sm leading-relaxed">It is the practice of integrating security at every stage of the DevOps lifecycle. It breaks the silos between Development, Security, and Operations to deliver high-quality, secure software at speed.</p>
-                </div>
-                <div class="card">
-                    <h3 class="neon text-2xl font-bold mb-4">Shift Left Security</h3>
-                    <p class="text-zinc-400 text-sm leading-relaxed">The strategy of moving security testing earlier in the development process. Detecting a vulnerability during the "Code" phase is significantly more cost-effective than finding it in "Production".</p>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 border-t border-white/5 pt-12">
+            <div>
+                <h4 class="text-white font-bold uppercase text-xs mb-6 tracking-widest text-blue-500">Architecture Deep Dive</h4>
+                <div class="space-y-6 text-sm text-zinc-400">
+                    <p>
+                        <strong class="text-white">CI/CD Orchestration:</strong> Utilizing GitHub Actions to handle the heavy lifting. Upon a push to the <code class="mono text-blue-400">main</code> branch, the runner triggers a multi-stage Docker build, tagging images with unique commit SHAs for versioning.
+                    </p>
+                    <p>
+                        <strong class="text-white">Serverless Compute:</strong> By choosing <strong class="text-green-500">AWS Fargate</strong>, QuantumShield achieves a true "Serverless" container experience. We eliminate the need to manage EC2 instances, patch operating systems, or worry about cluster scaling.
+                    </p>
+                    <p>
+                        <strong class="text-white">Networking & Traffic:</strong> The Application Load Balancer (ALB) serves as the secure entry point, distributing traffic across healthy Fargate tasks spread across multiple Availability Zones for high availability.
+                    </p>
                 </div>
             </div>
-        </section>
 
-        <section id="pipeline" class="scroll-mt-24 reveal">
-            <h2 class="section-title text-right">02.<br>Automated Pipeline</h2>
-            <div class="card mb-6">
-                <h3 class="text-white font-bold mb-2">Continuous Integration (CI)</h3>
-                <p class="text-zinc-500 text-sm">Automating the building and testing of code every time a developer commits to GitHub. This ensures the "Main" branch is always stable.</p>
-            </div>
-            <div class="card">
-                <h3 class="text-white font-bold mb-2">Continuous Deployment (CD)</h3>
-                <p class="text-zinc-500 text-sm">Every change that passes all stages of your production pipeline is released to your customers automatically. No human intervention needed.</p>
-            </div>
-        </section>
-
-        <section id="docker" class="scroll-mt-24 reveal">
-            <h2 class="section-title">03.<br>Containers</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="card">
-                    <h4 class="neon font-bold mb-4 uppercase">Containers vs VMs</h4>
-                    <p class="text-zinc-400 text-sm">VMs virtualize hardware; Containers virtualize the OS. Containers are lightweight, start in seconds, and use far fewer resources than traditional Virtual Machines.</p>
+            <div class="space-y-6">
+                <h4 class="text-white font-bold uppercase text-xs mb-6 tracking-widest text-green-500">Technical Specifications</h4>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-black/50 p-4 border border-zinc-800 rounded-lg">
+                        <span class="block mono text-[10px] text-zinc-600 mb-1">COMPUTE</span>
+                        <span class="text-xs text-white">AWS Fargate (vCPU: 0.5, RAM: 1GB)</span>
+                    </div>
+                    <div class="bg-black/50 p-4 border border-zinc-800 rounded-lg">
+                        <span class="block mono text-[10px] text-zinc-600 mb-1">REGISTRY</span>
+                        <span class="text-xs text-white">Private Amazon ECR</span>
+                    </div>
+                    <div class="bg-black/50 p-4 border border-zinc-800 rounded-lg">
+                        <span class="block mono text-[10px] text-zinc-600 mb-1">SECURITY</span>
+                        <span class="text-xs text-white">IAM Roles & Task Execution Policies</span>
+                    </div>
+                    <div class="bg-black/50 p-4 border border-zinc-800 rounded-lg">
+                        <span class="block mono text-[10px] text-zinc-600 mb-1">NETWORK</span>
+                        <span class="text-xs text-white">Dual-Stack ALB (IPv4/IPv6)</span>
+                    </div>
                 </div>
-                <div class="card">
-                    <h4 class="neon font-bold mb-4 uppercase">Docker Security</h4>
-                    <p class="text-zinc-400 text-sm">Implementing **Image Scanning** (Trivy), using **Non-root users**, and keeping images minimal (Distroless) to prevent container escape attacks.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="k8s" class="scroll-mt-24 reveal">
-            <h2 class="section-title text-right">04.<br>Orchestration</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="card">
-                    <h4 class="text-white font-bold mb-2 uppercase">Control Plane</h4>
-                    <p class="text-[11px] text-zinc-500">The Brain: kube-apiserver, etcd (store), and kube-scheduler. Manages the cluster state.</p>
-                </div>
-                <div class="card">
-                    <h4 class="text-white font-bold mb-2 uppercase">Worker Node</h4>
-                    <p class="text-[11px] text-zinc-500">The Body: Kubelet and Kube-proxy. Where your Pods and containers actually run.</p>
-                </div>
-                <div class="card">
-                    <h4 class="text-white font-bold mb-2 uppercase">CNI</h4>
-                    <p class="text-[11px] text-zinc-500">The Networking: Plugins like Calico and Flannel that manage pod-to-pod communication.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="project" class="scroll-mt-24 reveal">
-            <h2 class="section-title text-zinc-800">Featured<br><span class="text-white italic">Project Sentinel</span></h2>
-            <div class="bg-zinc-900/30 border border-green-500/20 rounded-3xl p-10">
-                <h3 class="text-2xl font-black text-white mb-6 uppercase tracking-widest">AWS ECS Fargate CI/CD Deployment</h3>
-                <p class="text-zinc-500 text-sm mb-10 leading-relaxed">
-                    A complete enterprise-grade DevSecOps pipeline deploying a static web application using <strong>GitHub Actions</strong>, <strong>Amazon ECR</strong>, and <strong>ECS Fargate</strong>. 
-                    This architecture ensures an immutable deployment strategy without managing underlying EC2 servers.
-                </p>
                 
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                    <div class="space-y-6">
-                        <div class="flex gap-4">
-                            <div class="neon mono text-xs">01</div>
-                            <p class="text-xs"><strong class="text-white uppercase">Source:</strong> Code managed on GitHub with branch protection.</p>
-                        </div>
-                        <div class="flex gap-4">
-                            <div class="neon mono text-xs">02</div>
-                            <p class="text-xs"><strong class="text-white uppercase">Build:</strong> GitHub Actions builds Docker image & pushes to ECR.</p>
-                        </div>
-                        <div class="flex gap-4">
-                            <div class="neon mono text-xs">03</div>
-                            <p class="text-xs"><strong class="text-white uppercase">Deploy:</strong> ECS Fargate pulls image & updates Task Definition.</p>
-                        </div>
-                        <div class="flex gap-4">
-                            <div class="neon mono text-xs">04</div>
-                            <p class="text-xs"><strong class="text-white uppercase">Traffic:</strong> Application Load Balancer (ALB) routes traffic to healthy tasks.</p>
-                        </div>
-                    </div>
-                    <div class="bg-black/50 p-6 rounded-xl border border-zinc-800 mono text-[10px] text-green-900">
-                        <p class="mb-2">// DEPLOYMENT_LOG_EXTRACT</p>
-                        <p>STREAMS: github-actions-runner</p>
-                        <p>ACTION: docker_build --tag ecr/sentinel:v1.2</p>
-                        <p>STATUS: Push successful to us-east-1</p>
-                        <p>ECS: Updating Service 'Web-Service'...</p>
-                        <p class="text-green-500 mt-4">SUCCESS: Deployment Stable at ALB_DNS_URL</p>
-                    </div>
+                <div class="mt-6 p-4 bg-blue-500/5 border border-blue-500/20 rounded-lg">
+                    <h5 class="mono text-[10px] text-blue-400 uppercase mb-2">Upcoming Roadmap</h5>
+                    <ul class="text-[11px] text-zinc-500 space-y-1">
+                        <li>• AWS WAF Integration for Layer 7 Protection</li>
+                        <li>• SSL/TLS Encryption via AWS Certificate Manager (ACM)</li>
+                        <li>• Fine-grained IAM "Least Privilege" auditing</li>
+                    </ul>
                 </div>
             </div>
-        </section>
-
-        <section id="security" class="scroll-mt-24 reveal">
-            <h2 class="section-title">06.<br>Sec-Ops & Prep</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="card border-l-red-500">
-                    <h4 class="font-bold text-white mb-4 uppercase">SAST vs DAST</h4>
-                    <p class="text-xs text-zinc-500"><strong>SAST:</strong> Scans source code for flaws (e.g., SonarQube). <br><strong>DAST:</strong> Tests the running app for vulnerabilities (e.g., OWASP ZAP).</p>
-                </div>
-                <div class="card border-l-blue-500">
-                    <h4 class="font-bold text-white mb-4 uppercase">Interview Edge</h4>
-                    <p class="text-xs text-zinc-500">"In my ECS project, I used <strong>GitHub Secrets</strong> for AWS Access Keys to ensure <strong>Zero Secrets Exposure</strong> in the repository."</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="roadmap" class="scroll-mt-24 reveal">
-            <h2 class="section-title text-center text-zinc-800">The Path<br><span class="text-white italic">To Mastery</span></h2>
-            <div class="roadmap-line">
-                <div class="mb-20 relative">
-                    <div class="roadmap-dot"></div>
-                    <h4 class="text-xl font-bold text-white uppercase">Phase 1: Foundations</h4>
-                    <p class="text-zinc-500 text-sm">Linux Administration, GitOps, Shell Scripting, and Networking Essentials.</p>
-                </div>
-                <div class="mb-20 relative">
-                    <div class="roadmap-dot"></div>
-                    <h4 class="text-xl font-bold text-white uppercase">Phase 2: Orchestration</h4>
-                    <p class="text-zinc-500 text-sm">Dockerizing Microservices, K8s Architecture, and CI/CD Automation.</p>
-                </div>
-                <div class="relative">
-                    <div class="roadmap-dot"></div>
-                    <h4 class="text-xl font-bold text-white uppercase">Phase 3: Cloud Security</h4>
-                    <p class="text-zinc-500 text-sm">AWS Security (IAM, VPC), Terraform (IaC), and DevSecOps Compliance.</p>
-                </div>
-            </div>
-        </section>
-
+        </div>
     </div>
+</section>
+        <section id="theory" class="scroll-mt-32 reveal">
+            <h2 class="section-title">01.<br>DevSecOps<br>Philosophy</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div class="card">
+                    <h3 class="neon text-2xl font-bold mb-4 uppercase">Continuous Security</h3>
+                    <p class="text-sm leading-relaxed text-zinc-400">
+                        In **QuantumShield**, security isn't a final stage; it's a constant. We use automated gates to ensure that if a Docker image contains a high-level vulnerability, the pipeline **auto-terminates** before reaching AWS.
+                    </p>
+                </div>
+                <div class="card">
+                    <h3 class="accent text-2xl font-bold mb-4 uppercase">Immutable Infrastructure</h3>
+                    <p class="text-sm leading-relaxed text-zinc-400">
+                        We don't "update" servers. We replace them. By using **AWS Fargate**, we deploy entirely new containers for every change, ensuring that old vulnerabilities or "configuration drift" never exist.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="project-core" class="scroll-mt-32 reveal">
+            <div class="bg-zinc-900/40 border border-white/5 p-12 rounded-3xl relative overflow-hidden">
+                <h2 class="text-5xl font-black text-white mb-4 italic">PROJECT: QUANTUMSHIELD</h2>
+                <p class="mono text-zinc-500 text-xs tracking-widest mb-12 uppercase">E2E DevSecOps // AWS ECS Fargate // GitHub Actions</p>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                    <div>
+                        <h4 class="text-white font-bold uppercase text-xs mb-6 tracking-widest border-l-2 border-green-500 pl-4">The Objective</h4>
+                        <p class="text-sm text-zinc-400 leading-relaxed mb-8">
+                            To design a zero-management, cloud-native deployment system that handles code integration, container auditing, and serverless scaling. QuantumShield ensures that a developer's code is live on the internet within 120 seconds of a git push, fully secured.
+                        </p>
+                        <h4 class="text-white font-bold uppercase text-xs mb-6 tracking-widest border-l-2 border-green-500 pl-4">Technology Stack</h4>
+                        <div class="flex flex-wrap gap-2 mono text-[9px]">
+                            <span class="bg-zinc-800 px-3 py-1 rounded">NGINX</span>
+                            <span class="bg-zinc-800 px-3 py-1 rounded">DOCKER</span>
+                            <span class="bg-zinc-800 px-3 py-1 rounded">GITHUB ACTIONS</span>
+                            <span class="bg-zinc-800 px-3 py-1 rounded">AWS ECR</span>
+                            <span class="bg-zinc-800 px-3 py-1 rounded">AWS ECS FARGATE</span>
+                            <span class="bg-zinc-800 px-3 py-1 rounded">AWS ALB</span>
+                        </div>
+                    </div>
+                    <div class="bg-black/80 border border-zinc-800 p-8 rounded-xl font-mono text-[11px] text-green-700">
+                        <p class="mb-2 text-zinc-500">// ARCHITECTURE_VIEW</p>
+                        <p>1. SOURCE: GitHub Repository</p>
+                        <p>2. RUNNER: GitHub Actions Workflow</p>
+                        <p>3. IMAGE: Docker Container (Nginx)</p>
+                        <p>4. REGISTRY: Amazon Elastic Container Registry</p>
+                        <p>5. COMPUTE: AWS ECS (Serverless Fargate)</p>
+                        <p>6. GATEWAY: Application Load Balancer</p>
+                        <p class="mt-4 neon">STATUS: OPERATIONAL [100%]</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="steps" class="scroll-mt-32 reveal">
+            <h2 class="section-title">03.<br>The Execution<br>Roadmap</h2>
+            <div class="space-y-12">
+                <div class="card relative overflow-hidden">
+                    <span class="step-num">01</span>
+                    <h3 class="text-white font-bold text-xl mb-4">Containerization & Local Validation</h3>
+                    <p class="text-sm text-zinc-500 mb-6">We wrap the static HTML application into an <strong>Nginx-based Docker image</strong>. This ensures environment parity (it works on my machine AND the cloud).</p>
+                    <div class="bg-zinc-950 p-4 mono text-[10px] text-zinc-600">CMD: docker build -t quantum-shield:v1 .</div>
+                </div>
+                <div class="card relative overflow-hidden">
+                    <span class="step-num">02</span>
+                    <h3 class="text-white font-bold text-xl mb-4">Secure Image Registry (ECR)</h3>
+                    <p class="text-sm text-zinc-500 mb-6">The image is pushed to <strong>Amazon ECR</strong>. ECR acts as our secure vault, automatically scanning the image for OS vulnerabilities before it is ever used.</p>
+                </div>
+                <div class="card relative overflow-hidden">
+                    <span class="step-num">03</span>
+                    <h3 class="text-white font-bold text-xl mb-4">The CI/CD Engine (GitHub Actions)</h3>
+                    <p class="text-sm text-zinc-500 mb-6">We configure a <strong>YAML workflow</strong>. Every time code is pushed, GitHub spins up a virtual runner, logs into AWS via <strong>OIDC/Secrets</strong>, and pushes the new image automatically.</p>
+                </div>
+                <div class="card relative overflow-hidden">
+                    <span class="step-num">04</span>
+                    <h3 class="text-white font-bold text-xl mb-4">Orchestration with ECS Fargate</h3>
+                    <p class="text-sm text-zinc-500 mb-6">We use <strong>Amazon ECS</strong> with the <strong>Fargate</strong> launch type. We define a 'Task Definition' that tells AWS: "Use 0.5 CPU and 1GB RAM to run this specific image."</p>
+                </div>
+                <div class="card relative overflow-hidden border-l-blue-500">
+                    <span class="step-num">05</span>
+                    <h3 class="text-white font-bold text-xl mb-4">Load Balancing & Public Access</h3>
+                    <p class="text-sm text-zinc-500 mb-6">An <strong>Application Load Balancer (ALB)</strong> is placed in front. It provides a single DNS URL for users and performs "Health Checks" to ensure the container is actually responding.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="k8s" class="scroll-mt-32 reveal">
+            <h2 class="section-title text-right">04.<br>Orchestration<br>Theory</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="card">
+                    <h4 class="neon font-bold mb-4 uppercase">K8s Architecture</h4>
+                    <p class="text-xs text-zinc-500 leading-relaxed">Kubernetes manages clusters of containers. It consists of the <strong>Control Plane</strong> (The Brain) which manages the state, and <strong>Worker Nodes</strong> (The Muscle) where the pods live.</p>
+                </div>
+                <div class="card">
+                    <h4 class="accent font-bold mb-4 uppercase">Self-Healing</h4>
+                    <p class="text-xs text-zinc-500 leading-relaxed">If a container crashes in K8s, the <strong>Kubelet</strong> notices immediately and restarts it. This ensures "Zero Downtime" for applications like QuantumShield.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="interview" class="scroll-mt-32 reveal pb-40">
+            <h2 class="section-title">05.<br>The War Room<br>Prep</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="card border-l-red-500 bg-red-500/5">
+                    <h4 class="text-white font-bold text-xs uppercase mb-4">Q: Why use Fargate over EC2?</h4>
+                    <p class="text-[12px] text-zinc-400 italic">"Fargate is serverless. I don't have to patch the underlying OS, manage scaling, or worry about security at the infrastructure layer—AWS handles that, allowing me to focus on the application."</p>
+                </div>
+                <div class="card border-l-red-500 bg-red-500/5">
+                    <h4 class="text-white font-bold text-xs uppercase mb-4">Q: What is the benefit of a Load Balancer?</h4>
+                    <p class="text-[12px] text-zinc-400 italic">"It acts as a reverse proxy, distributing traffic to prevent any single container from being overwhelmed, and it provides SSL termination for secure HTTPS access."</p>
+                </div>
+            </div>
+        </section>
+        <section id="interview" class="scroll-mt-32 reveal pb-40">
+            <h2 class="section-title">05.<br>The War Room<br>Extended</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <div class="col-span-full mb-4"><span class="mono text-[10px] text-zinc-600 tracking-[5px] uppercase">// Cloud & Architecture</span></div>
+                
+                <div class="card border-l-blue-500 bg-blue-500/5">
+                    <h4 class="text-white font-bold text-xs uppercase mb-2">01. What is the role of an IAM Role in ECS?</h4>
+                    <p class="text-[11px] text-zinc-500 italic">"It provides the ECS Task permissions to interact with other AWS services like ECR (to pull images) or S3, without hardcoding credentials."</p>
+                </div>
+
+                <div class="card border-l-blue-500 bg-blue-500/5">
+                    <h4 class="text-white font-bold text-xs uppercase mb-2">02. Explain the difference between Public and Private Subnets.</h4>
+                    <p class="text-[11px] text-zinc-500 italic">"Public subnets have a route to an Internet Gateway; Private subnets do not and usually require a NAT Gateway for outbound traffic."</p>
+                </div>
+
+                <div class="card border-l-blue-500 bg-blue-500/5">
+                    <h4 class="text-white font-bold text-xs uppercase mb-2">03. What is a 'Task Definition' in AWS ECS?</h4>
+                    <p class="text-[11px] text-zinc-500 italic">"It is a blueprint for your application, defining which Docker image to use, CPU/Memory limits, and environment variables."</p>
+                </div>
+
+                <div class="card border-l-blue-500 bg-blue-500/5">
+                    <h4 class="text-white font-bold text-xs uppercase mb-2">04. How does Auto-Scaling work in QuantumShield?</h4>
+                    <p class="text-[11px] text-zinc-500 italic">"We use CloudWatch alarms to monitor CPU usage; if it exceeds 70%, ECS automatically spins up additional Fargate tasks."</p>
+                </div>
+
+                <div class="card border-l-blue-500 bg-blue-500/5">
+                    <h4 class="text-white font-bold text-xs uppercase mb-2">05. What is the benefit of using an Application Load Balancer (ALB)?</h4>
+                    <p class="text-[11px] text-zinc-500 italic">"It provides a single entry point, performs health checks, and supports path-based routing for microservices."</p>
+                </div>
+
+                <div class="col-span-full mt-10 mb-4"><span class="mono text-[10px] text-zinc-600 tracking-[5px] uppercase">// Container Security</span></div>
+
+                <div class="card border-l-green-500 bg-green-500/5">
+                    <h4 class="text-white font-bold text-xs uppercase mb-2">06. What is Image Scanning in ECR?</h4>
+                    <p class="text-[11px] text-zinc-500 italic">"It uses the Clair engine to scan images for Common Vulnerabilities and Exposures (CVEs) as soon as they are pushed."</p>
+                </div>
+
+                <div class="card border-l-green-500 bg-green-500/5">
+                    <h4 class="text-white font-bold text-xs uppercase mb-2">07. Why run containers as a Non-Root user?</h4>
+                    <p class="text-[11px] text-zinc-500 italic">"To prevent 'Privilege Escalation' attacks where a compromised container could gain control over the host system."</p>
+                </div>
+
+                <div class="card border-l-green-500 bg-green-500/5">
+                    <h4 class="text-white font-bold text-xs uppercase mb-2">08. What is a 'Distroless' Image?</h4>
+                    <p class="text-[11px] text-zinc-500 italic">"An image containing only your application and its dependencies, with no shell or package managers, reducing the attack surface."</p>
+                </div>
+
+                <div class="card border-l-green-500 bg-green-500/5">
+                    <h4 class="text-white font-bold text-xs uppercase mb-2">09. Explain 'Container Escape'.</h4>
+                    <p class="text-[11px] text-zinc-500 italic">"A security vulnerability where a process inside a container breaks out and gains unauthorized access to the host node."</p>
+                </div>
+
+                <div class="card border-l-green-500 bg-green-500/5">
+                    <h4 class="text-white font-bold text-xs uppercase mb-2">10. How do you manage secrets in a Dockerfile?</h4>
+                    <p class="text-[11px] text-zinc-500 italic">"Never hardcode them. Use BuildKit secrets or environment variables injected at runtime from a Secret Manager."</p>
+                </div>
+
+                <div class="col-span-full mt-10 mb-4"><span class="mono text-[10px] text-zinc-600 tracking-[5px] uppercase">// CI/CD & Automation</span></div>
+
+                <div class="card border-l-yellow-500 bg-yellow-500/5">
+                    <h4 class="text-white font-bold text-xs uppercase mb-2">11. What is a 'Self-Hosted' Runner?</h4>
+                    <p class="text-[11px] text-zinc-500 italic">"A machine you manage yourself to run GitHub Actions, providing more control over the environment and security."</p>
+                </div>
+
+                <div class="card border-l-yellow-500 bg-yellow-500/5">
+                    <h4 class="text-white font-bold text-xs uppercase mb-2">12. Explain Blue-Green Deployment.</h4>
+                    <p class="text-[11px] text-zinc-500 italic">"Two identical environments; you route traffic to 'Green' only after it passes all tests, ensuring zero-downtime rollbacks."</p>
+                </div>
+
+                <div class="card border-l-yellow-500 bg-yellow-500/5">
+                    <h4 class="text-white font-bold text-xs uppercase mb-2">13. What is 'GitOps'?</h4>
+                    <p class="text-[11px] text-zinc-500 italic">"Using Git as the single source of truth for infrastructure. Changes to Git automatically trigger infrastructure updates."</p>
+                </div>
+
+                <div class="card border-l-yellow-500 bg-yellow-500/5">
+                    <h4 class="text-white font-bold text-xs uppercase mb-2">14. What is the purpose of a 'Build Artifact'?</h4>
+                    <p class="text-[11px] text-zinc-500 italic">"It is the output of the build process (like a .war file or Docker image) that is ready to be deployed."</p>
+                </div>
+
+                <div class="card border-l-yellow-500 bg-yellow-500/5">
+                    <h4 class="text-white font-bold text-xs uppercase mb-2">15. How do you handle pipeline failures?</h4>
+                    <p class="text-[11px] text-zinc-500 italic">"Use exit codes and Slack/Email notifications to alert the team immediately, preventing bad code from progressing."</p>
+                </div>
+
+                <div class="col-span-full mt-10 mb-4"><span class="mono text-[10px] text-zinc-600 tracking-[5px] uppercase">// Networking & Protocols</span></div>
+
+                <div class="card border-l-purple-500 bg-purple-500/5">
+                    <h4 class="text-white font-bold text-xs uppercase mb-2">16. What is the difference between TCP and UDP?</h4>
+                    <p class="text-[11px] text-zinc-500 italic">"TCP is connection-oriented and reliable (3-way handshake); UDP is connectionless and fast (best for streaming)."</p>
+                </div>
+
+                <div class="card border-l-purple-500 bg-purple-500/5">
+                    <h4 class="text-white font-bold text-xs uppercase mb-2">17. Explain the 'Least Privilege' principle.</h4>
+                    <p class="text-[11px] text-zinc-500 italic">"Giving a user or service only the minimum permissions required to perform its specific task."</p>
+                </div>
+
+                <div class="card border-l-purple-500 bg-purple-500/5">
+                    <h4 class="text-white font-bold text-xs uppercase mb-2">18. What is an SSL/TLS Handshake?</h4>
+                    <p class="text-[11px] text-zinc-500 italic">"The process of establishing a secure, encrypted connection between a client and a server."</p>
+                </div>
+
+                <div class="card border-l-purple-500 bg-purple-500/5">
+                    <h4 class="text-white font-bold text-xs uppercase mb-2">19. What is a 'Security Group' in AWS?</h4>
+                    <p class="text-[11px] text-zinc-500 italic">"A virtual firewall that controls inbound and outbound traffic at the instance/task level."</p>
+                </div>
+
+                <div class="card border-l-purple-500 bg-purple-500/5">
+                    <h4 class="text-white font-bold text-xs uppercase mb-2">20. What is NAT (Network Address Translation)?</h4>
+                    <p class="text-[11px] text-zinc-500 italic">"A method of mapping multiple private IP addresses to a single public IP to allow internet access for private resources."</p>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
 
     <footer class="p-20 text-center border-t border-white/5 bg-zinc-950">
-        <h3 class="text-3xl font-black italic text-white mb-4">ATHARVA HARSULKAR</h3>
-        <p class="mono text-zinc-700 text-[10px] tracking-[10px] uppercase">DevSecOps Engineer // Network Security Enthusiast</p>
-        <div class="mt-10 flex justify-center gap-6 text-zinc-500 mono text-[10px]">
-            <span>Github: Elim-nator</span>
-            <span>Batch: 2026</span>
+        <h3 class="text-4xl font-black italic text-white mb-2">ATHARVA HARSULKAR</h3>
+        <p class="mono text-zinc-600 text-[9px] tracking-[12px] uppercase">DevSecOps Engineer // Elim-nator_Labs // 2026</p>
+        <div class="mt-12 flex justify-center gap-10 mono text-[9px] text-zinc-800">
+            <span>PROJECT: QUANTUMSHIELD_v4</span>
+            <span>STATUS: ACTIVE</span>
         </div>
     </footer>
 
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
-        // GSAP Reveal Animations
+        // Fade in sections on scroll
         gsap.utils.toArray(".reveal").forEach(el => {
             gsap.from(el, {
                 opacity: 0,
-                y: 80,
-                duration: 1,
+                y: 100,
+                duration: 1.2,
                 scrollTrigger: {
                     trigger: el,
-                    start: "top 85%",
+                    start: "top 90%",
                 }
             });
         });
 
-        // Terminal Log Script
-        const logBox = document.getElementById('log-engine');
-        const phrases = [
-            "IMAGE_SCAN: Trivy found 0 High Vulnerabilities.",
-            "K8S_STATUS: Replicas running at 100% health.",
-            "AWS_ECS: Task definition updated to v4.",
-            "SAST_CHECK: SonarQube Code Analysis Passed.",
-            "NETWORK_POL: Calico Deny-All ingress active.",
-            "IAM_MONITOR: Access granted for CI/CD Pipeline.",
-            "BUILD_STATUS: Success - Artifact stored in ECR."
-        ];
-
-        setInterval(() => {
-            const p = document.createElement('p');
-            p.innerHTML = `<span class="text-green-900">>></span> ${phrases[Math.floor(Math.random() * phrases.length)]}`;
-            logBox.appendChild(p);
-            logBox.scrollTop = logBox.scrollHeight;
-            if(logBox.children.length > 12) logBox.removeChild(logBox.children[0]);
-        }, 2000);
+        // Smooth clicking for Nav
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
     </script>
+
 </body>
 </html>
